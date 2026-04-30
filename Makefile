@@ -9,7 +9,7 @@ build:
 gui: 
 	cd ./results/$(TEST)_build && dve -vpd eth_waveform.vpd
 cov:
-	vcs -f ./results/build_eth.f -ntb_opts uvm-1.2 -sverilog -cm line+cond+tgl+assert -LDFLAGS -Wl,--no-as-needed -full64 -debug_all
+	vcs -f ./tb_src/build_eth.f -ntb_opts uvm-1.2 -sverilog -cm line+cond+tgl+assert -LDFLAGS -Wl,--no-as-needed -full64 -debug_all
 	cd ./results && rm -rf $(TEST)_cov
 	cd ./results && mkdir -p $(TEST)_cov
 	mv -f csrc* simv* ./results/$(TEST)_cov/
@@ -25,7 +25,7 @@ allclean:
 clean: 
 	rm -rf csrc DVEfiles inter.vpd simv simv.daidir simv.vdb tr_db.log ucli.key vc_hdrs.h novas.conf novas_dump.log *.txt *.vdb *.daidir test *.cst *.log 
 asrt:
-	vcs -f ./results/build_eth.f -ntb_opts uvm-1.2 -sverilog -assert enable_diag \+define+ASSERT_ON +define+check1+check2+check3+check4+check5+check6+check7 -LDFLAGS -Wl,--no-as-needed -full64 -debug_all +lint=TFIPC-L -cm assert
+	vcs -f ./tb_src/build_eth.f -ntb_opts uvm-1.2 -sverilog -assert enable_diag \+define+ASSERT_ON +define+check1+check2+check3+check4+check5+check6+check7 -LDFLAGS -Wl,--no-as-needed -full64 -debug_all +lint=TFIPC-L -cm assert
 	cd ./results && rm -rf $(TEST)_asrt
 	cd ./results && mkdir -p $(TEST)_asrt
 	mv csrc* simv* -t ./results/$(TEST)_asrt

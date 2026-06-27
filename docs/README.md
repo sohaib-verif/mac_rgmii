@@ -1,6 +1,7 @@
 # Ethernet IP - Design Notes
 
 **Designer:** rmd, Javaria  
+**Verified By: Sohaib Hussain, Yasir Farooq**
 **Date:** 2024
 
 Hey verification team, here's what you need to know about this ethernet design. Keep it simple, test it well.
